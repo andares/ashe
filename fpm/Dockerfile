@@ -24,6 +24,7 @@ RUN mkdir -p /worker/apps \
     && mkdir -p /worker/swap \
     && chmod +x /etc/init.d/php-fpm \
     && chmod +x /etc/init.d/fpm \
+    && ln -s /etc/init.d/fpm /usr/local/bin/fpm \
     && apk add --no-cache gcc g++ make libffi-dev libxml2-dev openssl-dev libpng-dev imagemagick-dev autoconf libmemcached-dev mosquitto-dev rabbitmq-c-dev libsasl yaml-dev libuuid msgpack-c-dev util-linux-dev \
     && printf "\n" | pecl install -f amqp imagick msgpack memcached mongodb channel://pecl.php.net/mosquitto-0.4.0 redis uuid yaml \
     && docker-php-ext-enable amqp imagick memcached mongodb mosquitto msgpack redis uuid yaml \
