@@ -9,8 +9,8 @@ ARG scene=default
 
 # 复制配置文件，包括php与fpm
 # 复制启动脚本
-COPY ./local/etc /usr/local/etc
-COPY ./etc/init.d /etc/init.d
+COPY local/etc /usr/local/etc
+COPY etc/init.d /etc/init.d
 
 # 安装基础编译包
 # 安装初步依赖
@@ -23,6 +23,7 @@ RUN mkdir -p /worker/apps \
     && mkdir -p /worker/logs \
     && mkdir -p /worker/swap \
     && chmod +x /etc/init.d/php-fpm \
+    && chmod +x /etc/init.d/fpm \
     && apk add --no-cache gcc g++ make libffi-dev libxml2-dev openssl-dev libpng-dev imagemagick-dev autoconf libmemcached-dev mosquitto-dev rabbitmq-c-dev libsasl yaml-dev libuuid msgpack-c-dev util-linux-dev \
     && printf "\n" | pecl install -f amqp imagick msgpack memcached mongodb channel://pecl.php.net/mosquitto-0.4.0 redis uuid yaml \
     && docker-php-ext-enable amqp imagick memcached mongodb mosquitto msgpack redis uuid yaml \

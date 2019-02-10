@@ -1,0 +1,59 @@
+#! /bin/sh
+
+PID=`ps|grep master|grep php-fpm`
+PID=${PID%%root*}
+
+case "$1" in
+	start)
+		echo "Starting php-fpm "
+		docker-php-entrypoint -D
+	;;
+
+	stop)
+		echo "Gracefully shutting down php-fpm "
+
+		if [ ! $PID ] ; then
+			echo "warning, no fpm process found - php-fpm is not running ?"
+			exit 1
+		fi
+
+		kill -QUIT $PID
+	;;
+
+	force-quit)
+		echo "Terminating php-fpm "
+
+		if [ ! $PID ] ; then
+			echo "warning, no fpm process found - php-fpm is not running ?"
+			exit 1
+		fi
+
+		kill -TERM $PID
+	;;
+
+	restart)
+		$0 stop
+		$0 start
+	;;
+
+	reload)
+
+		echo "Reload service php-fpm "
+
+		if [ ! $PID ] ; then
+			echo "warning, no fpm process found - php-fpm is not running ?"
+			exit 1
+		fi
+
+		kill -USR2 $PID
+	;;
+
+	*)
+		# echo "Usage: $0 {start|stop|force-quit|restart|reload}"
+		echo "Usage: $0 {reload}"
+		echo "PID: $PID"
+		exit 1
+	;;
+
+esac
+
