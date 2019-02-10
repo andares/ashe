@@ -9,8 +9,8 @@ ARG scene=default
 
 # 复制配置文件，包括php与fpm
 # 复制启动脚本
-COPY local/etc /usr/local/etc
-COPY etc/init.d /etc/init.d
+COPY ./local/etc /usr/local/etc
+COPY ./etc/init.d /etc/init.d
 
 # 安装基础编译包
 # 安装初步依赖
@@ -28,7 +28,7 @@ RUN mkdir -p /worker/apps \
     && docker-php-ext-enable amqp imagick memcached mongodb mosquitto msgpack redis uuid yaml \
     && apk add --no-cache libpng-dev gettext-dev gmp-dev postgresql-dev \
     && docker-php-ext-install bcmath exif gd gettext gmp pcntl pdo_pgsql sockets sysvmsg sysvsem sysvshm zip opcache \
-    && apk del --no-cache gcc g++ make libffi-dev libxml2-dev openssl-dev autoconf mosquitto-dev libsasl libuuid msgpack-c-dev \
+    && apk del --no-cache gcc g++ make libffi-dev libxml2-dev openssl-dev autoconf libsasl libuuid msgpack-c-dev \
     && apk add --no-cache supervisor
 
 # 设置entrypoint在docker-compose中进行
