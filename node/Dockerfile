@@ -19,4 +19,5 @@ RUN mkdir -p /worker/apps \
 
 COPY worker/bootstrap.bash /worker/bootstrap.bash
 
-ENTRYPOINT ["bash", "/worker/bootstrap.bash"]
+# entrypoint请在docker-compose中设置
+# ENTRYPOINT ["bash", "/worker/bootstrap.bash"]
