@@ -1,6 +1,28 @@
 # ashe/fpm image
 
-This image include php extensions:
+php-fpm image with my favorite extensions.
+
+## Pull Image
+
+```bash
+docker pull andares/ashe-fpm
+```
+
+## Reload process
+
+You can run ```fpm reload``` to reload fpm process.
+
+By Docker or docker-compose:
+
+```bash
+# docker
+docker exec <contain id> fpm reload
+
+# docker-compose
+docker-compose exec <service> fpm reload
+```
+
+## Include PHP extensions
 
 ```
 [PHP Modules]
@@ -63,3 +85,4 @@ zlib
 [Zend Modules]
 Zend OPcache
 ```
+
