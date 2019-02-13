@@ -1,4 +1,3 @@
-# FROM php:7.2-fpm-alpine as local
 FROM node:lts-alpine
 LABEL maintainer="A.M <andares@outlook.com>"
 
