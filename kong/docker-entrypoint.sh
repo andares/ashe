@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e
 
+sleep 5
+
 kong migrations bootstrap
 
 export KONG_NGINX_DAEMON=off
