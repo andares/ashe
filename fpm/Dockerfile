@@ -33,4 +33,9 @@ RUN mkdir -p /worker/apps \
     && apk del --no-cache gcc g++ make libffi-dev libxml2-dev openssl-dev autoconf libsasl libuuid msgpack-c-dev \
     && apk add --no-cache supervisor
 
+# 装nginx实现自举
+RUN apk add --no-cache nginx \
+    && mkdir -p /worker/sites
+COPY etc/nginx /etc/nginx
+
 # 设置entrypoint在docker-compose中进行
