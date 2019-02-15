@@ -35,7 +35,9 @@ RUN mkdir -p /worker/apps \
 
 # 装nginx实现自举
 RUN apk add --no-cache nginx \
+    && mkdir -p /run/nginx \
     && mkdir -p /worker/sites
 COPY etc/nginx /etc/nginx
+COPY local/bin /usr/local/bin
 
 # 设置entrypoint在docker-compose中进行
