@@ -40,4 +40,7 @@ RUN apk add --no-cache nginx \
 COPY etc/nginx /etc/nginx
 COPY local/bin /usr/local/bin
 
+RUN apk add --no-cache bash \
+    && chmod +x /usr/local/bin/*
+
 # 设置entrypoint在docker-compose中进行
