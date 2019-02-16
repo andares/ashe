@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sleep 20
+sleep $ENTRYPOINT_DELAY
 
 node ./bin/konga.js prepare --adapter $DB_ADAPTER --uri $DB_URI
 node --harmony app.js

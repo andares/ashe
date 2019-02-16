@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-sleep 10
+sleep $ENTRYPOINT_DELAY
 
 kong migrations bootstrap
 
