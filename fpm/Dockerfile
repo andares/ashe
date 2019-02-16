@@ -43,4 +43,7 @@ COPY local/bin /usr/local/bin
 RUN apk add --no-cache zsh \
     && chmod +x /usr/local/bin/*
 
+RUN wget -c https://getcomposer.org/composer.phar -O /usr/local/bin/composer \
+    && chmod +x /usr/local/bin/composer
+
 # 设置entrypoint在docker-compose中进行
