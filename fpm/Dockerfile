@@ -48,4 +48,8 @@ RUN wget -c https://getcomposer.org/composer.phar -O /usr/local/bin/composer \
     && mv /usr/local/etc/php-fpm.d/docker.conf /usr/local/etc/php-fpm.d/docker.conf.disabled \
     && mv /usr/local/etc/php-fpm.d/zz-docker.conf /usr/local/etc/php-fpm.d/zz-docker.conf.disabled
 
+RUN chmod +x /etc/init.d/reload \
+  && ln -s /etc/init.d/reload /usr/local/bin/reload \
+  && chmod +x /usr/local/bin/reload
+
 # 设置entrypoint在docker-compose中进行

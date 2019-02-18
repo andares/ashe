@@ -1,0 +1,2 @@
+#! /bin/sh
+fpm reload
