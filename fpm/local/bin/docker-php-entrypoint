@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e
 
+sleep $ENTRYPOINT_DELAY
+
 nginx -c /etc/nginx/nginx.conf
 supervisord -c /etc/supervisord.conf
 

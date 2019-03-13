@@ -3,6 +3,7 @@ FROM php:7.2-fpm-alpine
 LABEL maintainer="A.M <andares@outlook.com>"
 
 ENV VERSION 1.0
+ENV ENTRYPOINT_DELAY 50
 ARG scene=default
 
 # CMD ["sh", "-c", "echo", "container build at $scene"]
