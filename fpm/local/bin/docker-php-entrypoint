@@ -2,6 +2,7 @@
 set -e
 
 nginx -c /etc/nginx/nginx.conf
+supervisord -c /etc/supervisord.conf
 
 # first arg is `-f` or `--some-option`
 if [ "${1#-}" != "$1" ]; then
