@@ -18,5 +18,7 @@ RUN mkdir -p /worker/apps \
 
 COPY worker/bootstrap.bash /worker/bootstrap.bash
 
-# entrypoint请在docker-compose中设置
-# ENTRYPOINT ["bash", "/worker/bootstrap.bash"]
+RUN apk add --no-cache zsh \
+    && chmod +x /usr/local/bin/*
+
+ENTRYPOINT ["bash", "/worker/bootstrap.bash"]
