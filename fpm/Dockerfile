@@ -53,4 +53,7 @@ RUN chmod +x /etc/init.d/reload \
   && ln -s /etc/init.d/reload /usr/local/bin/reload \
   && chmod +x /usr/local/bin/reload
 
+# baseline 安装支持
+RUN apk add --no-cache git openssh
+
 # 设置entrypoint在docker-compose中进行
