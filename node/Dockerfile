@@ -18,7 +18,7 @@ RUN mkdir -p /worker/apps \
 
 COPY worker/bootstrap.bash /worker/bootstrap.bash
 
-RUN apk add --no-cache zsh \
+RUN apk add --no-cache zsh openrc \
     && chmod +x /usr/local/bin/*
 
 ENTRYPOINT ["bash", "/worker/bootstrap.bash"]
